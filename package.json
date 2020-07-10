@@ -4,6 +4,12 @@
   "main": "index.js",
   "license": "GPL-3.0-only",
   "devDependencies": {
+    "parcel-bundler": "^1.12.4",
     "typescript": "^3.9.6"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url ./",
+    "test": "jest"
   }
 }
