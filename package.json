@@ -2,5 +2,8 @@
   "name": "corona-coaster",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "GPL-3.0-only"
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "typescript": "^3.9.6"
+  }
 }
