@@ -9,9 +9,19 @@ body.onload = function () {
 
 	var circle = new easeljs.Shape();
 	circle.graphics.beginFill('Cyan').drawCircle(0, 0, 50);
-	circle.x = 100;
-	circle.y = 100;
+	circle.x = circle.y = 100;
 	stage.addChild(circle);
 
 	stage.update();
+
+	easeljs.Ticker.addEventListener('tick', handleTick);
+
+	function handleTick() {
+		circle.x += 10;
+
+		if (circle.x > stage.canvas.width)
+			circle.x = 0;
+
+		stage.update();
+	}
 }
