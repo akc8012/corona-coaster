@@ -4,9 +4,7 @@
   "license": "GPL-3.0-only",
   "dependencies": {
     "@createjs/easeljs": "^2.0.0-beta.4",
-    "createjs": "^1.0.1",
-    "@types/createjs-lib": "^0.0.29",
-    "@types/easeljs": "^1.0.0"
+    "createjs": "^1.0.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.0",
