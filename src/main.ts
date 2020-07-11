@@ -6,5 +6,12 @@ if (body !== null)
 
 body.onload = function () {
 	let stage = new easeljs.Stage('canvas');
-	console.log(stage);
+
+	var circle = new easeljs.Shape();
+	circle.graphics.beginFill('Cyan').drawCircle(0, 0, 50);
+	circle.x = 100;
+	circle.y = 100;
+	stage.addChild(circle);
+
+	stage.update();
 }
