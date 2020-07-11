@@ -1,1 +1,0 @@
-{"version":3,"sources":["src/main.ts"],"names":[],"mappings":";AAAA,IAAI,EAAiB,aACrB,QAAQ,IAAI","file":"main.8cae477a.js","sourceRoot":"..","sourcesContent":["let cheese: string = 'Sup world!';\nconsole.log(cheese);\n"]}
