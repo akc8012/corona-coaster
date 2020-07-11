@@ -2,8 +2,12 @@
   "name": "corona-coaster",
   "version": "0.1.0",
   "license": "GPL-3.0-only",
+  "dependencies": {
+    "easeljs": "^1.0.2"
+  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.0",
+    "@types/easeljs": "^1.0.0",
     "@types/jest": "^26.0.4",
     "jest": "^26.1.0",
     "jest-extended": "^0.11.5",
