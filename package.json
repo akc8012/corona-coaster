@@ -4,7 +4,8 @@
   "license": "GPL-3.0-only",
   "dependencies": {
     "@createjs/easeljs": "^2.0.0-beta.4",
-    "createjs": "^1.0.1"
+    "createjs": "^1.0.1",
+    "sty": "^0.6.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.0",
@@ -12,6 +13,7 @@
     "jest": "^26.1.0",
     "jest-extended": "^0.11.5",
     "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.10",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.6"
   },

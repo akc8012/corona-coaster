@@ -1,3 +1,4 @@
+import './style.scss';
 const easeljs = require('@createjs/easeljs');
 
 let body = document.getElementById('body');
@@ -6,7 +7,7 @@ if (body !== null)
 
 let stage = new easeljs.Stage('canvas');
 let circle = new easeljs.Shape();
-let text = new easeljs.Text('Tristan did the CoronaVirus!', '20px Arial', '#0000ff');
+let text = new easeljs.Text('Tristan did the CoronaVirus!', '20px Arial', '#FFB6C1');
 
 body.onload = function () {
 	circle.graphics.beginFill('Cyan').drawCircle(0, 0, 50);
@@ -18,12 +19,13 @@ body.onload = function () {
 	stage.addChild(text);
 }
 
+easeljs.Ticker.framerate = 60;
 easeljs.Ticker.addEventListener('tick', function () {
-	circle.x += 10;
+	text.x -= 0.5;
+
+	circle.x += 5;
 	if (circle.x > stage.canvas.width)
 		circle.x = 0;
-
-	text.x -= 1;
 
 	stage.update();
 });
