@@ -15,22 +15,18 @@ function createCanvas(): HTMLCanvasElement {
 	canvas.height = height;
 
 	if (needsBorder)
-		// TODO: Do I *really* need to define border *here*? :(
 		canvas.style.border = '1px solid #000';
 
 	return canvas;
 }
 
 function calculateCanvasSize(windowSize: number[]): { size: number[], needsBorder: boolean } {
-	let [width, height] = windowSize;
-	console.log(width, height);
+	if (isMobileScreen(windowSize[0]))
+		return { size: [480, 854], needsBorder: true };
 
-	let needsBorder = false;
-	if (width >= 500) {
-		width = 480;
-		height = 854;
-		needsBorder = true;
-	}
+	return { size: windowSize, needsBorder: false };
+}
 
-	return { size: [width, height], needsBorder };
+function isMobileScreen(width: number): boolean {
+	return width >= 500;
 }
