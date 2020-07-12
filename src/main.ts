@@ -7,7 +7,7 @@ import './style.scss';
 
 let stage: any = undefined;
 const circle = new easeljs.Shape();
-const text = new easeljs.Text('benny is the bomb 💣💣💣', '20px Arial', '#FFB6C1');
+const text = new easeljs.Text('I am the tweeeeeeeeener!! 🥳🥳🥳', '20px Arial', '#FFB6C1');
 
 // TODO: resize on windowSizeChange event?
 document.getElementById('body').onload = function () {
@@ -32,3 +32,14 @@ document.getElementById('body').onload = function () {
 
 	console.log('my body is ready');
 }
+
+easeljs.Ticker.framerate = 60;
+easeljs.Ticker.addEventListener('tick', function () {
+	text.x -= 0.6;
+
+	circle.x += 5;
+	if (circle.x > stage.canvas.width)
+		circle.x = 0;
+
+	stage.update();
+});
