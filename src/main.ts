@@ -1,6 +1,6 @@
 const easeljs = require('@createjs/easeljs');
 
-import { createStage } from './createStage';
+import { createStage } from './stage/createStage';
 import './style.scss';
 
 

@@ -22,4 +22,3 @@ function createCanvas(): HTMLCanvasElement {
 
 	return canvas;
 }
-
