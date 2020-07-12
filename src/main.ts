@@ -20,7 +20,18 @@ document.getElementById('body').onload = function () {
 	text.textBaseline = 'top';
 	stage.addChild(text);
 
+	stage.addChild(createIntroVideo());
 	console.log('my body is ready');
+}
+
+function createIntroVideo(): any {
+	const video = document.getElementById('introVideo');
+	const videoBitmap = new easeljs.Bitmap(video);
+	videoBitmap.x = -188;
+	videoBitmap.scaleX = 1.186;
+	videoBitmap.scaleY = 1.78;
+
+	return videoBitmap;
 }
 
 easeljs.Ticker.framerate = 60;
