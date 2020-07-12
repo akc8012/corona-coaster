@@ -1,5 +1,4 @@
 const easeljs = require('@createjs/easeljs');
-const tweenjs = require('@createjs/tweenjs');
 
 import './assets/style.scss';
 import { createStage } from './stage/createStage';
