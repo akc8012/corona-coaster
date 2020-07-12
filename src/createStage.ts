@@ -1,5 +1,8 @@
 const easeljs = require('@createjs/easeljs');
+import { calculateCanvasSize } from "./calculateCanvasSize";
 
+
+const borderStyle = '1px solid #000';
 
 export function createStage() {
 	const canvas = createCanvas();
@@ -15,18 +18,8 @@ function createCanvas(): HTMLCanvasElement {
 	canvas.height = height;
 
 	if (needsBorder)
-		canvas.style.border = '1px solid #000';
+		canvas.style.border = borderStyle;
 
 	return canvas;
 }
 
-function calculateCanvasSize(windowSize: number[]): { size: number[], needsBorder: boolean } {
-	if (isMobileScreen(windowSize[0]))
-		return { size: [480, 854], needsBorder: true };
-
-	return { size: windowSize, needsBorder: false };
-}
-
-function isMobileScreen(width: number): boolean {
-	return width >= 500;
-}

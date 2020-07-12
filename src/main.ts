@@ -4,7 +4,7 @@ import { createStage } from './createStage';
 import './style.scss';
 
 
-let stage: any = null;
+let stage: any = undefined;
 const circle = new easeljs.Shape();
 const text = new easeljs.Text('benny is the bomb 💣💣💣', '20px Arial', '#FFB6C1');
 
