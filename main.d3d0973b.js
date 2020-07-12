@@ -97,4 +97,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"jP6t":[function(require,module,exports) {
 "use strict";var e=require("./stage/createStage");require("./style.scss");var a=require("@createjs/easeljs"),t=void 0,i=new a.Shape,r=new a.Text("benny is the bomb 💣💣💣","20px Arial","#FFB6C1");document.getElementById("body").onload=function(){t=(0,e.createStage)(),i.graphics.beginFill("Cyan").drawCircle(0,0,50),i.y=300,t.addChild(i),r.x=t.canvas.width,r.y=40,r.textBaseline="top",t.addChild(r),console.log("my body is ready")},a.Ticker.framerate=60,a.Ticker.addEventListener("tick",function(){r.x-=.5,i.x+=5,i.x>t.canvas.width&&(i.x=0),t.update()});
 },{"@createjs/easeljs":"wxXY","./stage/createStage":"YUbB","./style.scss":"T0VR"}]},{},["jP6t"], null)
-//# sourceMappingURL=main.225eca13.js.map
+//# sourceMappingURL=main.d3d0973b.js.map
