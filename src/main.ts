@@ -1,4 +1,5 @@
-import * as createjs from '@createjs/easeljs';
+/// <reference path='./easel.d.ts' />
+import 'easeljs';
 
 import './assets/style.scss';
 import { createStage } from './stage/createStage';
