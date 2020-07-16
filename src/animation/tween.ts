@@ -1,8 +1,8 @@
 // TODO: VS Code shows an error even though *its fine*
 import pow from '../assets/sprites/pow.png';
 
-const easeljs = require('@createjs/easeljs');
-const tweenjs = require('@createjs/tweenjs');
+import * as createjs from '@createjs/easeljs';
+import * as tweenjs from '@createjs/tweenjs';
 
 
 export function initTween(stage: any) {
@@ -13,7 +13,7 @@ export function initTween(stage: any) {
 }
 
 function addAnimation(stage: any) {
-	let powBitmap = new easeljs.Bitmap(pow);
+	let powBitmap = new createjs.Bitmap(pow);
 	powBitmap.scale = 0.5;
 	powBitmap.x = -185;
 	powBitmap.y = 100;

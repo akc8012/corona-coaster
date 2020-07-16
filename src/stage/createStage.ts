@@ -1,4 +1,4 @@
-const easeljs = require('@createjs/easeljs');
+import * as createjs from '@createjs/easeljs';
 import { calculateCanvasSize } from "./calculateCanvasSize";
 
 
@@ -7,7 +7,7 @@ const borderStyle = '1px solid #000';
 export function createStage() {
 	const canvas = createCanvas();
 	document.body.appendChild(canvas);
-	return new easeljs.Stage(canvas);
+	return new createjs.Stage(canvas);
 }
 
 function createCanvas(): HTMLCanvasElement {
