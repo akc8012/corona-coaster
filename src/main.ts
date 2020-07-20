@@ -1,4 +1,4 @@
-import * as createjs from '@createjs/easeljs';
+import * as createjs from 'createjs-module';
 
 import './assets/style.scss';
 import { createStage } from './stage/createStage';
