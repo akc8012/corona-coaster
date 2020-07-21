@@ -8,6 +8,7 @@ const borderStyle = '1px solid #000';
 export function createStage(): createjs.Stage {
 	const canvas = createCanvas();
 	document.body.appendChild(canvas);
+
 	return new createjs.Stage(canvas);
 }
 

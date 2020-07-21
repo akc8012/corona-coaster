@@ -10,7 +10,7 @@ export function initTween(stage: any) {
 }
 
 function addAnimation(stage: any) {
-	let powBitmap = new createjs.Bitmap(pow);
+	const powBitmap = new createjs.Bitmap(pow);
 	powBitmap.scaleX = 0.5;
 	powBitmap.scaleY = 0.5;
 	powBitmap.x = -185;
