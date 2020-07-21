@@ -5,4 +5,4 @@
 4. `yarn install`
 5. `yarn start`
 6. Open `localhost:1234` in your favorite web browser
-7. Keep it crispy. Your saved changes are automatically applied!
+7. Keep it crispy. Your saved changes are applied automatically!
