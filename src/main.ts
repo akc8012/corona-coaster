@@ -5,14 +5,14 @@ import { createStage } from './stage/createStage';
 import { initTween } from './animation/tween';
 
 
-let stage: any = undefined;
+let stage: createjs.Stage;
 const text = new createjs.Text('I am the tweeeeeeeeener!! 🥳🥳🥳', '20px Arial', '#FFB6C1');
 
 // TODO: resize on windowSizeChange event?
 document.getElementById('body').onload = function () {
 	stage = createStage();
 
-	text.x = stage.canvas.width;
+	text.x = (stage.canvas as HTMLCanvasElement).width;
 	text.y = 40;
 	text.textBaseline = 'top';
 	stage.addChild(text);
