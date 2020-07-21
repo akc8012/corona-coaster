@@ -1,12 +1,14 @@
-import * as createjs from '@createjs/easeljs';
+import * as createjs from 'createjs-module';
 import { calculateCanvasSize } from "./calculateCanvasSize";
 
 
+// TODO: put this in the style.scss, my guy
 const borderStyle = '1px solid #000';
 
-export function createStage() {
+export function createStage(): createjs.Stage {
 	const canvas = createCanvas();
 	document.body.appendChild(canvas);
+
 	return new createjs.Stage(canvas);
 }
 
