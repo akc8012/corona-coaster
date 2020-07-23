@@ -19,8 +19,8 @@
     "typescript": "^3.9.6"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --public-url ./",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./ --no-source-maps",
     "test": "jest"
   },
   "jest": {
@@ -31,7 +31,7 @@
       "js"
     ],
     "setupFilesAfterEnv": [
-      "<rootDir>/testSetup.ts"
+      "<rootDir>/src/testSetup.ts"
     ]
   }
 }
