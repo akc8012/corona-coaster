@@ -17,11 +17,11 @@ document.getElementById('body').onload = function () {
 }
 
 function createText(): createjs.Text {
-	const text = new createjs.Text('I am the tweeeeeeeeener!! 🥳🥳🥳', '20px Arial', '#FFB6C1');
+	const text = new createjs.Text('no longer looping the tween DEAL WITH IT', '20px Arial', '#FFB6C1');
 	text.name = 'text';
 
 	text.x = (stage.canvas as HTMLCanvasElement).width;
-	text.y = 40;
+	text.y = 50;
 	text.textBaseline = 'top';
 
 	return text;
@@ -29,7 +29,7 @@ function createText(): createjs.Text {
 
 createjs.Ticker.framerate = 60;
 createjs.Ticker.addEventListener('tick', function () {
-	stage.getChildByName('text').x -= 0.6;
+	stage.getChildByName('text').x -= 0.8;
 
 	stage.update();
 });

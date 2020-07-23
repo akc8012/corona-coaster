@@ -17,7 +17,7 @@ function addAnimation(stage: any) {
 	powBitmap.y = 100;
 	stage.addChild(powBitmap);
 
-	createjs.Tween.get(powBitmap, { loop: true })
+	createjs.Tween.get(powBitmap, { loop: false })
 		.to({ x: 235, alpha: 1 }, 1000, createjs.Ease.getPowInOut(4))
 		.to({ y: 250 }, 500, createjs.Ease.getPowInOut(2))
 		.to({ x: 0, alpha: 0 }, 800, createjs.Ease.getPowInOut(2));
