@@ -1,6 +1,7 @@
 import * as createjs from 'createjs-module';
 import { Ray, raycast, Hit } from './raycast';
 
+
 test('zero colliders returns no hit', () => {
 	const ray: Ray = {
 		origin: [2, 4],
@@ -27,8 +28,17 @@ test('ray with short maxDistance returns no hit', () => {
 		origin: [-1.5, 1],
 		maxDistance: 0.5,
 	};
-
 	const bounds = new createjs.Rectangle(-3, 2, 4, 2);
+
+	expect(raycast(ray, [bounds])).toBeNull();
+});
+
+test('ray outside x range returns no hit', () => {
+	const ray: Ray = {
+		origin: [-30, 0],
+		maxDistance: 3,
+	};
+	const bounds = new createjs.Rectangle(-4, 1, 10, 10);
 
 	expect(raycast(ray, [bounds])).toBeNull();
 });

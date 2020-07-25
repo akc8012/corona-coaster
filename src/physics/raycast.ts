@@ -1,6 +1,7 @@
 import * as mathjs from 'mathjs';
 import { Rectangle } from 'createjs-module';
 
+
 type Vector = [number, number];
 
 export type Ray = {
