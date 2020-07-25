@@ -21,3 +21,17 @@ test('ray intersection returns hit', () => {
 
 	expect(raycast(ray, [bounds])).toStrictEqual(expectedHit);
 });
+
+test('ray with short maxDistance returns no hit', () => {
+	const ray: Ray = {
+		origin: [-1.5, 1],
+		maxDistance: 0.5,
+	};
+
+	const bounds = new createjs.Rectangle(-3, 2, 4, 2);
+
+	expect(raycast(ray, [bounds])).toBeNull();
+});
+
+
+// TODO: ray intersection returns hit from several colliders
