@@ -1,25 +1,27 @@
+import * as createjs from 'createjs-module';
 import { Point, Rectangle } from 'createjs-module';
 
 export type Ray = {
+	// TODO: Should we use simpler custom types instead of EaselJS classes?
 	origin: Point;
 	direction: Point;
 	maxDistance: number;
 }
 
-type Hit = {
+export type Hit = {
 	point: Point;
-	distance: Point;
+	distance: number;
 }
 
-type Colliders = Bounds[];
+export type Colliders = Bounds[];
 
 // TODO: This should be more dynamic - Could also be a Cirlce
-type Bounds = Rectangle;
+export type Bounds = Rectangle;
 
 export function raycast(ray: Ray, colliders: Colliders): Hit | null {
+	for (const bounds of colliders) {
+		return { point: new createjs.Point(1, 4), distance: 1 };
+	}
+
 	return null;
-	// return {
-	// 	point: new createjs.Point(2, 4),
-	// 	distance: new createjs.Point(0, 100)
-	// };
 }
