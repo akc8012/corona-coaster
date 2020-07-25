@@ -6,11 +6,13 @@
     "@createjs/easeljs": "^2.0.0-beta.4",
     "@createjs/tweenjs": "^2.0.0-beta.4",
     "createjs-module": "^0.8.3",
+    "mathjs": "^7.1.0",
     "sty": "^0.6.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.0",
     "@types/jest": "^26.0.4",
+    "@types/mathjs": "^6.0.5",
     "canvas": "^2.6.1",
     "jest": "^26.1.0",
     "jest-extended": "^0.11.5",
