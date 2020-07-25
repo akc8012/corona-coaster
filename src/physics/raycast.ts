@@ -1,4 +1,3 @@
-import * as createjs from 'createjs-module';
 import { Point, Rectangle } from 'createjs-module';
 
 export type Ray = {
