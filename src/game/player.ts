@@ -1,5 +1,6 @@
 import * as createjs from 'createjs-module';
 import { Bounds } from '../physics/raycast';
+import cart from '../assets/sprites/cart.png';
 
 
 export interface IPlayer {
@@ -9,25 +10,25 @@ export interface IPlayer {
 
 export class Player implements IPlayer {
 	bounds = { x: 0, y: 0, width: 32, height: 32 };
-	rectangle = new createjs.Shape();
+	sprite = new createjs.Bitmap(cart);
 
 	constructor(stage: createjs.Stage) {
 		const bounds = this.bounds;
-		this.rectangle.graphics.beginFill('Cyan').drawRect(
-			bounds.x,
-			bounds.y,
-			bounds.width,
-			bounds.height
-		);
 
-		stage.addChild(this.rectangle);
+		this.sprite.x = bounds.x;
+		this.sprite.y = bounds.x;
+		this.sprite.scaleX = bounds.width;
+		this.sprite.scaleY = bounds.height;
+
+		stage.addChild(this.sprite);
 	}
 
 	update() {
 		this.bounds.x += 0.1;
 		this.bounds.y += 0.05;
 
-		this.rectangle.x = this.bounds.x;
-		this.rectangle.y = this.bounds.y;
+		this.sprite.x = this.bounds.x;
+		this.sprite.y = this.bounds.y;
+		this.sprite.rotation = 22;
 	}
 }
