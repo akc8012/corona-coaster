@@ -8,7 +8,7 @@ import { initTween } from './animation/tween';
 let stage: createjs.Stage;
 
 // TODO: resize on windowSizeChange event?
-document.getElementById('body').onload = function () {
+document.getElementById('body')!.onload = function () {
 	stage = createStage();
 	initTween(stage);
 
