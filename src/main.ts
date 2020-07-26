@@ -2,7 +2,7 @@ import * as createjs from 'createjs-module';
 
 import './assets/style.scss';
 import { createStage } from './stage/createStage';
-import { initTween } from './animation/tween';
+import { addAnimation } from './animation/tween';
 import { Player, IPlayer } from './game/player';
 
 
@@ -12,7 +12,7 @@ let stage: createjs.Stage;
 document.getElementById('body')!.onload = function () {
 	stage = createStage();
 
-	initTween(stage);
+	addAnimation(stage);
 	stage.addChild(createText());
 
 	const player = createPlayer();
