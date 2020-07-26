@@ -12,12 +12,15 @@ export function createGame() {
 	const text = createText((stage.canvas as HTMLCanvasElement).width);
 	stage.addChild(text);
 
-	const player: IPlayer = new Player();
+	const player: IPlayer = new Player(stage);
+	player.bounds.x = 20;
 	console.log(player.bounds);
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
 		text.x -= 0.8;
+		player.update();
+
 		stage.update();
 	});
 }
