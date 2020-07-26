@@ -3,6 +3,7 @@ import * as createjs from 'createjs-module';
 import './assets/style.scss';
 import { createStage } from './stage/createStage';
 import { initTween } from './animation/tween';
+import { Player, IPlayer } from './game/player';
 
 
 let stage: createjs.Stage;
@@ -10,9 +11,13 @@ let stage: createjs.Stage;
 // TODO: resize on windowSizeChange event?
 document.getElementById('body')!.onload = function () {
 	stage = createStage();
-	initTween(stage);
 
+	initTween(stage);
 	stage.addChild(createText());
+
+	const player = createPlayer();
+	console.log(player.bounds);
+
 	console.log('my body is ready');
 }
 
@@ -25,6 +30,11 @@ function createText(): createjs.Text {
 	text.textBaseline = 'top';
 
 	return text;
+}
+
+function createPlayer(): IPlayer {
+	const player = new Player();
+	return player;
 }
 
 createjs.Ticker.framerate = 60;
