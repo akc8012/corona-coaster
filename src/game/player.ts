@@ -1,5 +1,6 @@
 import { Bounds } from '../physics/raycast';
 
+
 export interface IPlayer {
 	bounds: Bounds;
 }
