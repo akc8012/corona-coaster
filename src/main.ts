@@ -6,40 +6,30 @@ import { addAnimation } from './animation/tween';
 import { Player, IPlayer } from './game/player';
 
 
-let stage: createjs.Stage;
-
-// TODO: resize on windowSizeChange event?
 document.getElementById('body')!.onload = function () {
-	stage = createStage();
-
+	const stage = createStage();
 	addAnimation(stage);
-	stage.addChild(createText());
 
-	const player = createPlayer();
+	const text = createText((stage.canvas as HTMLCanvasElement).width);
+	stage.addChild(text);
+
+	const player = new Player();
 	console.log(player.bounds);
 
-	console.log('my body is ready');
+	createjs.Ticker.framerate = 60;
+	createjs.Ticker.addEventListener('tick', function () {
+		text.x -= 0.8;
+		stage.update();
+	});
 }
 
-function createText(): createjs.Text {
+function createText(canvasWidth: number): createjs.Text {
 	const text = new createjs.Text('no longer looping the tween DEAL WITH IT', '20px Arial', '#FFB6C1');
 	text.name = 'text';
 
-	text.x = (stage.canvas as HTMLCanvasElement).width;
+	text.x = canvasWidth;
 	text.y = 50;
 	text.textBaseline = 'top';
 
 	return text;
 }
-
-function createPlayer(): IPlayer {
-	const player = new Player();
-	return player;
-}
-
-createjs.Ticker.framerate = 60;
-createjs.Ticker.addEventListener('tick', function () {
-	stage.getChildByName('text').x -= 0.8;
-
-	stage.update();
-});

@@ -12,6 +12,7 @@ export function createStage(): createjs.Stage {
 	return new createjs.Stage(canvas);
 }
 
+// TODO: resize on windowSizeChange event?
 function createCanvas(): HTMLCanvasElement {
 	const canvas = document.createElement('canvas');
 
