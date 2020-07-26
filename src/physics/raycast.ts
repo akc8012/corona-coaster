@@ -1,4 +1,4 @@
-type Vector = [number, number];
+export type Vector = [number, number];
 
 export type Ray = {
 	origin: Vector,

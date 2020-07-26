@@ -3,26 +3,35 @@ import * as createjs from 'createjs-module';
 import { createStage } from '../stage/createStage';
 import { addAnimation } from '../animation/tween';
 import { Player, IPlayer } from './player';
+import { Colliders } from '../physics/raycast';
 
 
 export function createGame() {
 	const stage = createStage();
 	addAnimation(stage);
 
-	const text = createText((stage.canvas as HTMLCanvasElement).width);
+	const [width, height] = getCanvasSize(stage.canvas as HTMLCanvasElement);
+
+	const text = createText(width);
 	stage.addChild(text);
 
+	const track: Colliders = [
+		{ x: 0, y: height, width, height: 32 },
+	];
+
 	const player: IPlayer = new Player(stage);
-	player.bounds.x = 20;
-	console.log(player.bounds);
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
 		text.x -= 0.8;
-		player.update();
+		player.update(track);
 
 		stage.update();
 	});
+}
+
+function getCanvasSize(canvas: HTMLCanvasElement): [number, number] {
+	return [canvas.width, canvas.height];
 }
 
 function createText(canvasWidth: number): createjs.Text {
