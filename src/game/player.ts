@@ -13,12 +13,9 @@ export class Player implements IPlayer {
 	sprite = new createjs.Bitmap(cart);
 
 	constructor(stage: createjs.Stage) {
-		const bounds = this.bounds;
-
-		this.sprite.x = bounds.x;
-		this.sprite.y = bounds.x;
-		this.sprite.scaleX = bounds.width;
-		this.sprite.scaleY = bounds.height;
+		this.sprite.scaleX = this.bounds.width;
+		this.sprite.scaleY = this.bounds.height;
+		this.sprite.rotation = 22;
 
 		stage.addChild(this.sprite);
 	}
@@ -29,6 +26,5 @@ export class Player implements IPlayer {
 
 		this.sprite.x = this.bounds.x;
 		this.sprite.y = this.bounds.y;
-		this.sprite.rotation = 22;
 	}
 }
