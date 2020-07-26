@@ -21,8 +21,7 @@ test('ray with short maxDistance returns no hit', () => {
 	expect(raycast(ray, [bounds])).toBeNull();
 });
 
-// TODO: fix yah boi
-test.skip('ray outside x range returns no hit', () => {
+test('ray outside x range returns no hit', () => {
 	const ray: Ray = {
 		origin: [-30, 0],
 		maxDistance: 3,

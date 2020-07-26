@@ -18,12 +18,13 @@ export type Bounds = Rectangle;
 
 export function raycast(ray: Ray, colliders: Colliders): Hit | null {
 	for (const bounds of colliders) {
-		const overflow = (ray.origin[1] + ray.maxDistance) - bounds.y;
+		const verticalOverflow: number = (ray.origin[1] + ray.maxDistance) - bounds.y;
+		const withinHorizontal: boolean = (ray.origin[0] >= bounds.x) && (ray.origin[0] <= bounds.x + bounds.width);
 
-		if (overflow >= 0) {
+		if (verticalOverflow >= 0 && withinHorizontal) {
 			return {
 				point: [ray.origin[0], bounds.y],
-				distance: ray.maxDistance - overflow,
+				distance: ray.maxDistance - verticalOverflow,
 			};
 		}
 	}
