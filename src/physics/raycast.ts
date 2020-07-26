@@ -17,17 +17,22 @@ export type Colliders = Bounds[];
 export type Bounds = Rectangle;
 
 export function raycast(ray: Ray, colliders: Colliders): Hit | null {
+	let closest: Hit | null = null;
+
 	for (const bounds of colliders) {
+		if (closest !== null && bounds.y >= closest.point[1])
+			continue;
+
 		const verticalOverflow: number = (ray.origin[1] + ray.maxDistance) - bounds.y;
 		const withinHorizontal: boolean = (ray.origin[0] >= bounds.x) && (ray.origin[0] <= bounds.x + bounds.width);
 
 		if (verticalOverflow >= 0 && withinHorizontal) {
-			return {
+			closest = {
 				point: [ray.origin[0], bounds.y],
 				distance: ray.maxDistance - verticalOverflow,
 			};
 		}
 	}
 
-	return null;
+	return closest;
 }

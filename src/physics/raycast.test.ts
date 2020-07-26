@@ -54,3 +54,18 @@ test('ray intersection returns hit past collider bounds', () => {
 
 	expect(raycast(ray, [bounds])).toStrictEqual(expectedHit);
 });
+
+test('ray intersection returns closest hit from several colliders', () => {
+	const ray: Ray = {
+		origin: [0, 0],
+		maxDistance: 5,
+	};
+
+	const colliders = [
+		new createjs.Rectangle(-4, 2, 8, 1),
+		new createjs.Rectangle(-4, 1, 8, 1)
+	];
+	const expectedHit: Hit = { point: [0, 1], distance: 1 };
+
+	expect(raycast(ray, colliders)).toStrictEqual(expectedHit);
+});
