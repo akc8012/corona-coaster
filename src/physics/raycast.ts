@@ -1,6 +1,3 @@
-import { Rectangle } from 'createjs-module';
-
-
 type Vector = [number, number];
 
 export type Ray = {
@@ -15,6 +12,13 @@ export type Hit = {
 
 export type Colliders = Bounds[];
 export type Bounds = Rectangle;
+
+type Rectangle = {
+	x: number,
+	y: number,
+	width: number,
+	height: number,
+}
 
 export function raycast(ray: Ray, colliders: Colliders): Hit | null {
 	let closest: Hit | null = null;
