@@ -1,17 +1,16 @@
-import * as mathjs from 'mathjs';
 import { Rectangle } from 'createjs-module';
 
 
 type Vector = [number, number];
 
 export type Ray = {
-	origin: Vector;
-	maxDistance: number;
+	origin: Vector,
+	maxDistance: number,
 }
 
 export type Hit = {
-	point: Vector;
-	distance: number;
+	point: Vector,
+	distance: number,
 }
 
 export type Colliders = Bounds[];
@@ -19,14 +18,12 @@ export type Bounds = Rectangle;
 
 export function raycast(ray: Ray, colliders: Colliders): Hit | null {
 	for (const bounds of colliders) {
-		const endPoint = mathjs.add(ray.origin, ray.maxDistance) as Vector;
+		const overflow = (ray.origin[1] + ray.maxDistance) - bounds.y;
 
-		if (bounds.contains(endPoint[0], endPoint[1])) {
-			const overflow: number = endPoint[1] - bounds.y;
-
+		if (overflow >= 0) {
 			return {
 				point: [ray.origin[0], bounds.y],
-				distance: ray.maxDistance - overflow
+				distance: ray.maxDistance - overflow,
 			};
 		}
 	}
