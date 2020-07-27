@@ -25,7 +25,7 @@ export function createGame() {
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
 		text.x -= 0.8;
-		track[0].y += 1;
+		track[0].y += 0.6;
 		player.update(track);
 
 		stage.update();
