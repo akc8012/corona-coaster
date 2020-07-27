@@ -17,7 +17,7 @@ export function createGame() {
 	stage.addChild(text);
 
 	const track: Colliders = [
-		{ x: 0, y: height, width, height: 32 },
+		{ x: 0, y: 0, width, height: 32 },
 	];
 
 	const player: IPlayer = new Player(stage);
@@ -25,6 +25,7 @@ export function createGame() {
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
 		text.x -= 0.8;
+		track[0].y += 1;
 		player.update(track);
 
 		stage.update();
