@@ -30,7 +30,14 @@ export class Player implements IPlayer {
 		this.sprite.scaleY = this.bounds.height;
 
 		stage.addChild(this.sprite);
+
 		canvas.addEventListener('touchstart', () => this.jump());
+		canvas.addEventListener('mousedown', () => this.jump());
+		document.getElementById('body')!.addEventListener('keydown', (event) => {
+			const keys = ['Space', 'ArrowUp', 'KeyW'];
+			if (keys.includes(event.code))
+				this.jump()
+		});
 	}
 
 	jump() {
