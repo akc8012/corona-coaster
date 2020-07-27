@@ -10,7 +10,8 @@ export function createGame() {
 	const stage = createStage();
 	addAnimation(stage);
 
-	const [width, height] = getCanvasSize(stage.canvas as HTMLCanvasElement);
+	const canvas = stage.canvas as HTMLCanvasElement;
+	const [width, height] = getCanvasSize(canvas);
 
 	const text = createText(width);
 	stage.addChild(text);
@@ -27,6 +28,13 @@ export function createGame() {
 		player.update(track);
 
 		stage.update();
+	});
+
+	canvas.addEventListener('touchstart', function (touchEvent) {
+		const touch = touchEvent.touches[0];
+		console.log(touch.clientX, touch.clientY);
+
+		player.jump();
 	});
 }
 

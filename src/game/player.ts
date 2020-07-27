@@ -6,14 +6,17 @@ import cart from '../assets/sprites/cart.png';
 export interface IPlayer {
 	bounds: Bounds;
 	update: (track: Colliders) => void;
+	jump: () => void;
 }
 
 const GRAVITY = 2;
+const JUMP_HEIGHT = 20;
 
 export class Player implements IPlayer {
 	bounds: Bounds;
 	vel: Vector = [0, 0];
 	sprite = new createjs.Bitmap(cart);
+	grounded: boolean = false;
 
 	constructor(stage: createjs.Stage) {
 		this.bounds = {
@@ -31,6 +34,7 @@ export class Player implements IPlayer {
 
 	update(track: Colliders) {
 		this.vel[1] += GRAVITY;
+		this.grounded = false;
 
 		const ray: Ray = {
 			origin: [this.bounds.x + (this.bounds.width / 2), this.bounds.y + (this.bounds.height / 2)],
@@ -41,6 +45,7 @@ export class Player implements IPlayer {
 		if (hit !== null) {
 			this.vel[1] = 0;
 			this.bounds.y = hit.point[1] - this.bounds.height;
+			this.grounded = true;
 		}
 
 		this.updatePosition();
@@ -52,5 +57,12 @@ export class Player implements IPlayer {
 
 		this.sprite.x = this.bounds.x;
 		this.sprite.y = this.bounds.y;
+	}
+
+	jump() {
+		if (this.grounded) {
+			this.vel[1] -= JUMP_HEIGHT;
+			this.grounded = false;
+		}
 	}
 }
