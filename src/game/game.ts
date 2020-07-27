@@ -29,13 +29,6 @@ export function createGame() {
 
 		stage.update();
 	});
-
-	canvas.addEventListener('touchstart', function (touchEvent) {
-		const touch = touchEvent.touches[0];
-		console.log(touch.clientX, touch.clientY);
-
-		player.jump();
-	});
 }
 
 function getCanvasSize(canvas: HTMLCanvasElement): [number, number] {
