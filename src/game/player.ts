@@ -4,9 +4,7 @@ import cart from '../assets/sprites/cart.png';
 
 
 export interface IPlayer {
-	bounds: Bounds;
 	update: (track: Colliders) => void;
-	jump: () => void;
 }
 
 const GRAVITY = 2;
@@ -19,8 +17,10 @@ export class Player implements IPlayer {
 	grounded: boolean = false;
 
 	constructor(stage: createjs.Stage) {
+		const canvas = stage.canvas as HTMLCanvasElement;
+
 		this.bounds = {
-			x: ((stage.canvas as HTMLCanvasElement).width / 2) - 16,
+			x: (canvas.width / 2) - 16,
 			y: 0,
 			width: 32,
 			height: 32
@@ -30,6 +30,14 @@ export class Player implements IPlayer {
 		this.sprite.scaleY = this.bounds.height;
 
 		stage.addChild(this.sprite);
+		canvas.addEventListener('touchstart', () => this.jump());
+	}
+
+	jump() {
+		if (this.grounded) {
+			this.vel[1] -= JUMP_HEIGHT;
+			this.grounded = false;
+		}
 	}
 
 	update(track: Colliders) {
@@ -57,12 +65,5 @@ export class Player implements IPlayer {
 
 		this.sprite.x = this.bounds.x;
 		this.sprite.y = this.bounds.y;
-	}
-
-	jump() {
-		if (this.grounded) {
-			this.vel[1] -= JUMP_HEIGHT;
-			this.grounded = false;
-		}
 	}
 }
