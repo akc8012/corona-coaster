@@ -4,6 +4,7 @@ import { createStage } from '../stage/createStage';
 import { addAnimation } from '../animation/tween';
 import { Player, IPlayer } from './player';
 import { Colliders } from '../physics/raycast';
+import { ITrackPiece, TrackPiece } from './track';
 
 
 export function createGame() {
@@ -21,6 +22,8 @@ export function createGame() {
 	];
 
 	const player: IPlayer = new Player(stage);
+
+	const twack: ITrackPiece = new TrackPiece({ x: 20, y: 20, width: 32, height: 32 }, stage);
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
