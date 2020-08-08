@@ -1,4 +1,4 @@
-export type Vector = [number, number];
+import { Vector } from "./math";
 
 export type Ray = {
 	origin: Vector,

@@ -1,6 +1,7 @@
 import * as createjs from 'createjs-module';
 import { calculateCanvasSize } from "./calculateCanvasSize";
-import { addAnimation } from '~/animation/tween';
+import { createAnimations } from '~/animation/tween';
+import { Size } from '~/physics/math';
 
 
 export function createStage(): createjs.Stage {
@@ -8,7 +9,8 @@ export function createStage(): createjs.Stage {
 	document.body.appendChild(canvas);
 
 	const stage = new createjs.Stage(canvas);
-	addAnimation(stage);
+	for (const animation of createAnimations())
+		stage.addChild(animation);
 
 	return stage;
 }
@@ -17,16 +19,20 @@ export function createStage(): createjs.Stage {
 function createCanvas(): HTMLCanvasElement {
 	const canvas = document.createElement('canvas');
 
-	const { size: [width, height], needsBorder } = calculateCanvasSize([window.innerWidth, window.innerHeight]);
-	canvas.width = width;
-	canvas.height = height;
+	const sizeInfo = calculateCanvasSize({
+		width: window.innerWidth, height: window.innerHeight
+	});
 
-	if (needsBorder)
+	canvas.width = sizeInfo.size.width;
+	canvas.height = sizeInfo.size.height;
+
+	if (sizeInfo.needsBorder)
 		canvas.style.border = '1px solid #000';
 
 	return canvas;
 }
 
-export function getCanvasSize(canvas: HTMLCanvasElement): [number, number] {
-	return [canvas.width, canvas.height];
+export function getStageSize(stage: createjs.Stage): Size {
+	const canvas = stage.canvas as HTMLCanvasElement;
+	return { width: canvas.width, height: canvas.height };
 }

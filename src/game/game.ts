@@ -1,6 +1,6 @@
 import * as createjs from 'createjs-module';
 
-import { createStage, getCanvasSize } from '../stage/stage';
+import { createStage, getStageSize } from '../stage/stage';
 import { Player, IPlayer } from './player';
 import { Colliders } from '../physics/raycast';
 import { ITrackPiece, TrackPiece } from './track';
@@ -8,12 +8,10 @@ import { ITrackPiece, TrackPiece } from './track';
 
 export function createGame() {
 	const stage = createStage();
-
-	const canvas = stage.canvas as HTMLCanvasElement;
-	const [width, height] = getCanvasSize(canvas);
+	const stageSize = getStageSize(stage);
 
 	const track: Colliders = [
-		{ x: 0, y: 0, width, height: 32 },
+		{ x: 0, y: 0, width: stageSize.width, height: 32 },
 	];
 
 	const player: IPlayer = new Player(stage);
