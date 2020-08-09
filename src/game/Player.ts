@@ -1,7 +1,7 @@
 import * as createjs from 'createjs-module';
 
 import { Bounds, raycast, Ray } from '../physics/raycast';
-import { Vector } from "../physics/math";
+import { Vector } from '../physics/math';
 import { ITrack } from './Track';
 
 import cart from '../assets/sprites/cart.png';
@@ -56,11 +56,14 @@ export class Player implements IPlayer {
 		this.grounded = false;
 
 		const ray: Ray = {
-			origin: [this.bounds.x + (this.bounds.width / 2), this.bounds.y + (this.bounds.height / 2)],
+			origin: [
+				this.bounds.x + (this.bounds.width / 2),
+				this.bounds.y + (this.bounds.height / 2)
+			],
 			maxDistance: (this.bounds.height / 2) + this.vel[1],
 		};
 
-		const hit = raycast(ray, track.getPieces().map(p => p.bounds));
+		const hit = raycast(ray, track.getColliders());
 		if (hit !== null) {
 			this.vel[1] = 0;
 			this.bounds.y = hit.point[1] - this.bounds.height;

@@ -11,7 +11,6 @@ export type Hit = {
 	distance: number,
 }
 
-export type Colliders = Bounds[];
 export type Bounds = Rectangle;
 
 type Rectangle = {
@@ -21,7 +20,7 @@ type Rectangle = {
 	height: number,
 }
 
-export function raycast(ray: Ray, colliders: Colliders): Hit | null {
+export function raycast(ray: Ray, colliders: Bounds[]): Hit | null {
 	let closest: Hit | null = null;
 
 	for (const bounds of colliders) {

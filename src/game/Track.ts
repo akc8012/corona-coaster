@@ -8,7 +8,7 @@ export interface ITrackPiece {
 
 export interface ITrack {
 	update: () => void;
-	getPieces: () => ITrackPiece[];
+	getColliders: () => Bounds[];
 }
 
 export class Track implements ITrack {
@@ -18,8 +18,8 @@ export class Track implements ITrack {
 		this.pieces = pieces;
 	}
 
-	getPieces(): ITrackPiece[] {
-		return this.pieces;
+	getColliders(): Bounds[] {
+		return this.pieces.map(p => p.bounds);
 	}
 
 	update() {
