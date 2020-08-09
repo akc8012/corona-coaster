@@ -1,4 +1,4 @@
-import { Bounds } from '~/physics/raycast';
+import { Bounds } from '~/physics/physics';
 
 
 export interface ITrackPiece {

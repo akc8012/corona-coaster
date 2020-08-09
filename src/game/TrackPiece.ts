@@ -1,6 +1,6 @@
 import * as createjs from 'createjs-module';
 
-import { Bounds } from '~/physics/raycast';
+import { Bounds } from '~/physics/physics';
 import { ITrackPiece } from './Track';
 import cart from '../assets/sprites/cart.png';
 

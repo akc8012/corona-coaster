@@ -1,6 +1,6 @@
 import * as createjs from 'createjs-module';
 
-import { Bounds, raycast, Ray } from '../physics/raycast';
+import { Bounds, raycast, Ray } from '../physics/physics';
 import { Vector } from '../physics/math';
 import { ITrack } from './Track';
 

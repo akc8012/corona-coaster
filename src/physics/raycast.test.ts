@@ -1,4 +1,4 @@
-import { Ray, raycast, Hit } from './raycast';
+import { Ray, raycast, Hit } from './physics';
 
 
 test('zero colliders returns no hit', () => {
