@@ -17,6 +17,10 @@ export class Track implements ITrack {
 	pieces: ITrackPiece[];
 
 	constructor(stage: createjs.Stage) {
+		this.pieces = this.createPieces(stage);
+	}
+
+	createPieces(stage: createjs.Stage): ITrackPiece[] {
 		const stageSize = getStageSize(stage);
 
 		const region = {
@@ -25,9 +29,9 @@ export class Track implements ITrack {
 			width: stageSize.width,
 			height: 32
 		};
-		const trackPiece: ITrackPiece = new TrackPiece(stage, region);
 
-		this.pieces = [trackPiece];
+		const piece: ITrackPiece = new TrackPiece(stage, region);
+		return [piece];
 	}
 
 	getRegions(): Region[] {

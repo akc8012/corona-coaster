@@ -23,6 +23,9 @@ export class TrackPiece implements ITrackPiece {
 	}
 
 	update() {
+		const speed = 3;
+		this.region.x -= speed;
+
 		this.updatePosition();
 	}
 
