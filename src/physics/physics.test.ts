@@ -21,6 +21,13 @@ test('ray outside x range returns no hit', () => {
 	expect(raycast(ray, [region])).toBeNull();
 });
 
+test('ray origin lower than region returns no hit', () => {
+	const ray: Ray = { origin: [3, 8], maxDistance: 3 };
+	const region = { x: 2, y: 1, width: 10, height: 10 };
+
+	expect(raycast(ray, [region])).toBeNull();
+});
+
 test('ray intersection returns hit', () => {
 	const ray: Ray = { origin: [1, 3], maxDistance: 3 };
 
