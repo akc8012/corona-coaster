@@ -32,7 +32,7 @@ export class Track implements ITrack {
 				x: random(0, stageSize.width),
 				y: random(stageSize.height / 2, stageSize.height),
 				width: 128,
-				height: 16
+				height: 8
 			};
 
 			pieces.push(new TrackPiece(stage, region));

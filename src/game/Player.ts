@@ -1,8 +1,9 @@
 import * as createjs from 'createjs-module';
 
 import { Region, raycast, Ray } from '../physics/physics';
-import { Vector } from '../physics/math';
+import { Vector, Size } from '../physics/math';
 import { ITrack } from './Track';
+import { getStageSize } from '~/stage/stage';
 
 import cart from '../assets/sprites/cart.png';
 
@@ -19,9 +20,11 @@ export class Player implements IPlayer {
 	vel: Vector = [0, 0];
 	sprite = new createjs.Bitmap(cart);
 	grounded = false;
+	stageSize: Size;
 
 	constructor(stage: createjs.Stage) {
 		const canvas = stage.canvas as HTMLCanvasElement;
+		this.stageSize = getStageSize(stage);
 
 		const width = 32;
 		this.region = {
@@ -71,8 +74,7 @@ export class Player implements IPlayer {
 		this.vel[1] += GRAVITY;
 		this.grounded = false;
 
-		// TODO: get height from canvas
-		if (this.region.y > 854)
+		if (this.region.y > this.stageSize.height)
 			this.spawnAtCeiling();
 	}
 
