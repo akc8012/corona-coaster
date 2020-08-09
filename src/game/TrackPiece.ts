@@ -1,13 +1,9 @@
 import * as createjs from 'createjs-module';
 
 import { Bounds } from '~/physics/raycast';
+import { ITrackPiece } from './Track';
 import cart from '../assets/sprites/cart.png';
 
-
-export interface ITrackPiece {
-	bounds: Bounds;
-	update: () => void;
-}
 
 export class TrackPiece implements ITrackPiece {
 	bounds: Bounds;
@@ -34,27 +30,5 @@ export class TrackPiece implements ITrackPiece {
 	updatePosition() {
 		this.sprite.x = this.bounds.x;
 		this.sprite.y = this.bounds.y;
-	}
-}
-
-export interface ITrack {
-	update: () => void;
-	getPieces: () => ITrackPiece[];
-}
-
-export class Track implements ITrack {
-	pieces: ITrackPiece[];
-
-	constructor(pieces: ITrackPiece[]) {
-		this.pieces = pieces;
-	}
-
-	getPieces(): ITrackPiece[] {
-		return this.pieces;
-	}
-
-	update() {
-		for (const piece of this.pieces)
-			piece.update();
 	}
 }

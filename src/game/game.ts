@@ -1,8 +1,9 @@
 import * as createjs from 'createjs-module';
 
 import { createStage, getStageSize } from '../stage/stage';
-import { Player, IPlayer } from './player';
-import { ITrackPiece, TrackPiece, ITrack, Track } from './track';
+import { Player, IPlayer } from './Player';
+import { ITrackPiece, ITrack, Track } from './Track';
+import { TrackPiece } from "./TrackPiece";
 
 
 export function createGame() {

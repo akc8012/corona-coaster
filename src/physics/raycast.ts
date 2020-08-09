@@ -1,5 +1,6 @@
 import { Vector } from "./math";
 
+
 export type Ray = {
 	origin: Vector,
 	maxDistance: number,
