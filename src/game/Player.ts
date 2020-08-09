@@ -1,6 +1,6 @@
 import * as createjs from 'createjs-module';
 
-import { Bounds, raycast, Ray } from '../physics/physics';
+import { Region, raycast, Ray } from '../physics/physics';
 import { Vector } from '../physics/math';
 import { ITrack } from './Track';
 
@@ -15,7 +15,7 @@ const GRAVITY = 2;
 const JUMP_HEIGHT = 20;
 
 export class Player implements IPlayer {
-	bounds: Bounds;
+	region: Region;
 	vel: Vector = [0, 0];
 	sprite = new createjs.Bitmap(cart);
 	grounded: boolean = false;
@@ -23,15 +23,15 @@ export class Player implements IPlayer {
 	constructor(stage: createjs.Stage) {
 		const canvas = stage.canvas as HTMLCanvasElement;
 
-		this.bounds = {
+		this.region = {
 			x: (canvas.width / 2) - 16,
 			y: 0,
 			width: 32,
 			height: 32
 		};
 
-		this.sprite.scaleX = this.bounds.width;
-		this.sprite.scaleY = this.bounds.height;
+		this.sprite.scaleX = this.region.width;
+		this.sprite.scaleY = this.region.height;
 
 		stage.addChild(this.sprite);
 
@@ -57,16 +57,16 @@ export class Player implements IPlayer {
 
 		const ray: Ray = {
 			origin: [
-				this.bounds.x + (this.bounds.width / 2),
-				this.bounds.y + (this.bounds.height / 2)
+				this.region.x + (this.region.width / 2),
+				this.region.y + (this.region.height / 2)
 			],
-			maxDistance: (this.bounds.height / 2) + this.vel[1],
+			maxDistance: (this.region.height / 2) + this.vel[1],
 		};
 
-		const hit = raycast(ray, track.getColliders());
+		const hit = raycast(ray, track.getRegions());
 		if (hit !== null) {
 			this.vel[1] = 0;
-			this.bounds.y = hit.point[1] - this.bounds.height;
+			this.region.y = hit.point[1] - this.region.height;
 			this.grounded = true;
 		}
 
@@ -74,10 +74,10 @@ export class Player implements IPlayer {
 	}
 
 	updatePosition() {
-		this.bounds.x += this.vel[0];
-		this.bounds.y += this.vel[1];
+		this.region.x += this.vel[0];
+		this.region.y += this.vel[1];
 
-		this.sprite.x = this.bounds.x;
-		this.sprite.y = this.bounds.y;
+		this.sprite.x = this.region.x;
+		this.sprite.y = this.region.y;
 	}
 }

@@ -11,7 +11,7 @@ export type Hit = {
 	distance: number,
 }
 
-export type Bounds = Rectangle;
+export type Region = Rectangle;
 
 type Rectangle = {
 	x: number,
@@ -20,19 +20,19 @@ type Rectangle = {
 	height: number,
 }
 
-export function raycast(ray: Ray, colliders: Bounds[]): Hit | null {
+export function raycast(ray: Ray, regions: Region[]): Hit | null {
 	let closest: Hit | null = null;
 
-	for (const bounds of colliders) {
-		if (closest !== null && bounds.y >= closest.point[1])
+	for (const region of regions) {
+		if (closest !== null && region.y >= closest.point[1])
 			continue;
 
-		const verticalOverflow: number = (ray.origin[1] + ray.maxDistance) - bounds.y;
-		const withinHorizontal: boolean = (ray.origin[0] >= bounds.x) && (ray.origin[0] <= bounds.x + bounds.width);
+		const verticalOverflow: number = (ray.origin[1] + ray.maxDistance) - region.y;
+		const withinHorizontal: boolean = (ray.origin[0] >= region.x) && (ray.origin[0] <= region.x + region.width);
 
 		if (verticalOverflow >= 0 && withinHorizontal) {
 			closest = {
-				point: [ray.origin[0], bounds.y],
+				point: [ray.origin[0], region.y],
 				distance: ray.maxDistance - verticalOverflow,
 			};
 		}

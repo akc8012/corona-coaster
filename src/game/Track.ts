@@ -1,14 +1,14 @@
-import { Bounds } from '~/physics/physics';
+import { Region } from '~/physics/physics';
 
 
 export interface ITrackPiece {
-	bounds: Bounds;
+	region: Region;
 	update: () => void;
 }
 
 export interface ITrack {
 	update: () => void;
-	getColliders: () => Bounds[];
+	getRegions: () => Region[];
 }
 
 export class Track implements ITrack {
@@ -18,8 +18,8 @@ export class Track implements ITrack {
 		this.pieces = pieces;
 	}
 
-	getColliders(): Bounds[] {
-		return this.pieces.map(p => p.bounds);
+	getRegions(): Region[] {
+		return this.pieces.map(p => p.region);
 	}
 
 	update() {

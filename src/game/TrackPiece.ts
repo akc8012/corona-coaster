@@ -1,23 +1,23 @@
 import * as createjs from 'createjs-module';
 
-import { Bounds } from '~/physics/physics';
+import { Region } from '~/physics/physics';
 import { ITrackPiece } from './Track';
 import cart from '../assets/sprites/cart.png';
 
 
 export class TrackPiece implements ITrackPiece {
-	bounds: Bounds;
+	region: Region;
 	sprite: createjs.Bitmap;
 
-	constructor(stage: createjs.Stage, bounds: Bounds) {
-		this.bounds = bounds;
+	constructor(stage: createjs.Stage, region: Region) {
+		this.region = region;
 
 		this.sprite = new createjs.Bitmap(cart);
 		// TODO: Tint the sprite for debug purposes
-		this.sprite.x = bounds.x;
-		this.sprite.y = bounds.y;
-		this.sprite.scaleX = bounds.width;
-		this.sprite.scaleY = bounds.height;
+		this.sprite.x = region.x;
+		this.sprite.y = region.y;
+		this.sprite.scaleX = region.width;
+		this.sprite.scaleY = region.height;
 
 		stage.addChild(this.sprite);
 	}
@@ -28,7 +28,7 @@ export class TrackPiece implements ITrackPiece {
 
 	// TODO: Extract this to component
 	updatePosition() {
-		this.sprite.x = this.bounds.x;
-		this.sprite.y = this.bounds.y;
+		this.sprite.x = this.region.x;
+		this.sprite.y = this.region.y;
 	}
 }

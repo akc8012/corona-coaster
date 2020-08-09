@@ -14,8 +14,8 @@ export function createGame() {
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
-		track.getColliders()[0].x += 0.3;
-		track.getColliders()[0].y -= 0.6;
+		track.getRegions()[0].x += 0.3;
+		track.getRegions()[0].y -= 0.6;
 
 		track.update();
 		player.update(track);
@@ -26,16 +26,17 @@ export function createGame() {
 	console.log('my body is ready');
 }
 
+// TODO: This should be Track constructor
 function createTrack(stage: createjs.Stage): ITrack {
 	const stageSize = getStageSize(stage);
 
-	const bounds = {
+	const region = {
 		x: 0,
 		y: stageSize.height - 32,
 		width: stageSize.width,
 		height: 32
 	};
+	const trackPiece: ITrackPiece = new TrackPiece(stage, region);
 
-	const trackPiece: ITrackPiece = new TrackPiece(stage, bounds);
 	return new Track([trackPiece]);
 }
