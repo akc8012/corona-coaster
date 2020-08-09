@@ -1,11 +1,14 @@
 import * as createjs from 'createjs-module';
-import { Bounds, Colliders, raycast, Ray } from '../physics/raycast';
+
+import { Bounds, raycast, Ray } from '../physics/raycast';
 import { Vector } from "../physics/math";
+import { ITrack } from './Track';
+
 import cart from '../assets/sprites/cart.png';
 
 
 export interface IPlayer {
-	update: (track: Colliders) => void;
+	update: (track: ITrack) => void;
 }
 
 const GRAVITY = 2;
@@ -48,7 +51,7 @@ export class Player implements IPlayer {
 		}
 	}
 
-	update(track: Colliders) {
+	update(track: ITrack) {
 		this.vel[1] += GRAVITY;
 		this.grounded = false;
 
@@ -57,7 +60,7 @@ export class Player implements IPlayer {
 			maxDistance: (this.bounds.height / 2) + this.vel[1],
 		};
 
-		const hit = raycast(ray, track);
+		const hit = raycast(ray, track.getPieces().map(p => p.bounds));
 		if (hit !== null) {
 			this.vel[1] = 0;
 			this.bounds.y = hit.point[1] - this.bounds.height;

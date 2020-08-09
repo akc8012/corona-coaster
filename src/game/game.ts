@@ -14,13 +14,11 @@ export function createGame() {
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
-		const trackPieces = track.getPieces();
-
-		trackPieces[0].bounds.x += 0.3;
-		trackPieces[0].bounds.y -= 0.6;
+		track.getPieces()[0].bounds.x += 0.3;
+		track.getPieces()[0].bounds.y -= 0.6;
 
 		track.update();
-		player.update(trackPieces.map(p => p.bounds));
+		player.update(track);
 
 		stage.update();
 	});
