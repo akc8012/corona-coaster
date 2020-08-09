@@ -2,8 +2,9 @@ import * as createjs from 'createjs-module';
 import pow from '../assets/sprites/pow.png';
 
 
-export function addAnimation(stage: createjs.Stage) {
-	stage.addChild(createPow());
+export function createAnimations(): createjs.Bitmap[] {
+	const animations = [createPow()];
+	return animations;
 }
 
 function createPow(): createjs.Bitmap {

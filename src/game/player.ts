@@ -1,5 +1,6 @@
 import * as createjs from 'createjs-module';
-import { Bounds, Colliders, Vector, raycast, Ray } from '../physics/raycast';
+import { Bounds, Colliders, raycast, Ray } from '../physics/raycast';
+import { Vector } from "../physics/math";
 import cart from '../assets/sprites/cart.png';
 
 

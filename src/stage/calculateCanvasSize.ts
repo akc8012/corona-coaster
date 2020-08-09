@@ -1,10 +1,16 @@
-type CanvasSizeInfo = { size: number[], needsBorder: boolean };
-const desktopSize = [480, 854];
+import { Size } from "~/physics/math";
 
-export function calculateCanvasSize(windowSize: number[]): CanvasSizeInfo {
-	const [width] = windowSize;
-	if (isDesktopScreen(width))
-		return { size: desktopSize, needsBorder: true };
+
+type CanvasSizeInfo = {
+	size: Size,
+	needsBorder: boolean
+};
+
+const DESKTOP_SIZE = { width: 480, height: 854 };
+
+export function calculateCanvasSize(windowSize: Size): CanvasSizeInfo {
+	if (isDesktopScreen(windowSize.width))
+		return { size: DESKTOP_SIZE, needsBorder: true };
 
 	return { size: windowSize, needsBorder: false };
 }
