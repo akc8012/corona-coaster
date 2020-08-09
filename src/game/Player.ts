@@ -98,7 +98,7 @@ export class Player implements IPlayer {
 	createRays(): Ray[] {
 		return [{
 			origin: [
-				this.region.x + (this.region.width / 2),
+				this.region.x,
 				this.region.y + (this.region.height / 2)
 			],
 			maxDistance: (this.region.height / 2) + this.vel[1],
