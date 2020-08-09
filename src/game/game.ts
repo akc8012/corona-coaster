@@ -10,16 +10,23 @@ export function createGame() {
 	const stage = createStage();
 	const stageSize = getStageSize(stage);
 
-	const track: Colliders = [
-		{ x: 0, y: 0, width: stageSize.width, height: 32 },
-	];
-
 	const player: IPlayer = new Player(stage);
-	const twack: ITrackPiece = new TrackPiece({ x: 20, y: 20, width: 32, height: 32 }, stage);
+
+	const trackBounds = {
+		x: 0,
+		y: stageSize.height - 32,
+		width: stageSize.width,
+		height: 32
+	};
+	const trackPiece: ITrackPiece = new TrackPiece(stage, trackBounds);
+	const track: Colliders = [trackPiece.bounds];
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
-		track[0].y += 0.6;
+		track[0].x += 0.3;
+		track[0].y -= 0.6;
+		trackPiece.update();
+
 		player.update(track);
 
 		stage.update();
