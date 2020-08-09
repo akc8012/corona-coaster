@@ -1,12 +1,16 @@
 import * as createjs from 'createjs-module';
 
 import { Region } from '~/physics/physics';
-import { ITrackPiece } from './Track';
 import { getStageSize } from '~/stage/stage';
 import { Size } from '~/physics/math';
 
 import cart from '../assets/sprites/cart.png';
 
+
+export interface ITrackPiece {
+	region: Region;
+	update: () => void;
+}
 
 export class TrackPiece implements ITrackPiece {
 	region: Region;
@@ -32,7 +36,6 @@ export class TrackPiece implements ITrackPiece {
 		this.region.x -= speed;
 
 		this.loopAroundScreen();
-
 		this.updatePosition();
 	}
 

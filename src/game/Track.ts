@@ -1,15 +1,10 @@
 import { Region } from '~/physics/physics';
 import { getStageSize } from '~/stage/stage';
-import { TrackPiece } from './TrackPiece';
+import { TrackPiece, ITrackPiece } from './TrackPiece';
 import { random } from 'mathjs';
 
 
 const NUMBER_OF_PIECES = 8;
-
-export interface ITrackPiece {
-	region: Region;
-	update: () => void;
-}
 
 export interface ITrack {
 	update: () => void;
