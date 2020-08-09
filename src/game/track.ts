@@ -37,4 +37,24 @@ export class TrackPiece implements ITrackPiece {
 	}
 }
 
-// TODO: Track class *has* TrackPieces (which have Bounds)
+export interface ITrack {
+	update: () => void;
+	getPieces: () => ITrackPiece[];
+}
+
+export class Track implements ITrack {
+	pieces: ITrackPiece[];
+
+	constructor(pieces: ITrackPiece[]) {
+		this.pieces = pieces;
+	}
+
+	getPieces(): ITrackPiece[] {
+		return this.pieces;
+	}
+
+	update() {
+		for (const piece of this.pieces)
+			piece.update();
+	}
+}
