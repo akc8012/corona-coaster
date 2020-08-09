@@ -26,7 +26,14 @@ export class TrackPiece implements ITrackPiece {
 		const speed = 3;
 		this.region.x -= speed;
 
+		this.loopAroundScreen();
+
 		this.updatePosition();
+	}
+
+	loopAroundScreen() {
+		if (this.region.x + this.region.width < 0)
+			this.region.x = 480;
 	}
 
 	// TODO: Extract this to component

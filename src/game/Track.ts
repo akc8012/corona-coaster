@@ -1,7 +1,10 @@
 import { Region } from '~/physics/physics';
 import { getStageSize } from '~/stage/stage';
 import { TrackPiece } from './TrackPiece';
+import { random } from 'mathjs';
 
+
+const NUMBER_OF_PIECES = 8;
 
 export interface ITrackPiece {
 	region: Region;
@@ -23,15 +26,19 @@ export class Track implements ITrack {
 	createPieces(stage: createjs.Stage): ITrackPiece[] {
 		const stageSize = getStageSize(stage);
 
-		const region = {
-			x: 0,
-			y: stageSize.height - 32,
-			width: stageSize.width,
-			height: 32
-		};
+		let pieces: ITrackPiece[] = [];
+		for (let i = 0; i < NUMBER_OF_PIECES; i++) {
+			const region = {
+				x: random(0, stageSize.width),
+				y: random(stageSize.height / 2, stageSize.height),
+				width: 128,
+				height: 16
+			};
 
-		const piece: ITrackPiece = new TrackPiece(stage, region);
-		return [piece];
+			pieces.push(new TrackPiece(stage, region));
+		}
+
+		return pieces;
 	}
 
 	getRegions(): Region[] {
