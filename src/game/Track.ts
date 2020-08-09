@@ -1,4 +1,6 @@
 import { Region } from '~/physics/physics';
+import { getStageSize } from '~/stage/stage';
+import { TrackPiece } from './TrackPiece';
 
 
 export interface ITrackPiece {
@@ -14,8 +16,18 @@ export interface ITrack {
 export class Track implements ITrack {
 	pieces: ITrackPiece[];
 
-	constructor(pieces: ITrackPiece[]) {
-		this.pieces = pieces;
+	constructor(stage: createjs.Stage) {
+		const stageSize = getStageSize(stage);
+
+		const region = {
+			x: 0,
+			y: stageSize.height - 32,
+			width: stageSize.width,
+			height: 32
+		};
+		const trackPiece: ITrackPiece = new TrackPiece(stage, region);
+
+		this.pieces = [trackPiece];
 	}
 
 	getRegions(): Region[] {

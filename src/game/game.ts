@@ -1,16 +1,15 @@
 import * as createjs from 'createjs-module';
 
-import { createStage, getStageSize } from '../stage/stage';
+import { createStage } from '../stage/stage';
 import { Player, IPlayer } from './Player';
-import { ITrackPiece, ITrack, Track } from './Track';
-import { TrackPiece } from "./TrackPiece";
+import { ITrack, Track } from './Track';
 
 
 export function createGame() {
 	const stage = createStage();
 
 	const player: IPlayer = new Player(stage);
-	const track: ITrack = createTrack(stage);
+	const track: ITrack = new Track(stage);
 
 	createjs.Ticker.framerate = 60;
 	createjs.Ticker.addEventListener('tick', function () {
@@ -24,19 +23,4 @@ export function createGame() {
 	});
 
 	console.log('my body is ready');
-}
-
-// TODO: This should be Track constructor
-function createTrack(stage: createjs.Stage): ITrack {
-	const stageSize = getStageSize(stage);
-
-	const region = {
-		x: 0,
-		y: stageSize.height - 32,
-		width: stageSize.width,
-		height: 32
-	};
-	const trackPiece: ITrackPiece = new TrackPiece(stage, region);
-
-	return new Track([trackPiece]);
 }
