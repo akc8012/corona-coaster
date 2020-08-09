@@ -23,10 +23,7 @@ type Rectangle = {
 export function raycast(ray: Ray, regions: Region[]): Hit | null {
 	let closest: Hit | null = null;
 
-	for (const region of regions) {
-		if (ray.origin[1] > region.y)
-			continue;
-
+	for (const region of regions.filter(region => ray.origin[1] < region.y)) {
 		const verticalOverflow = (ray.origin[1] + ray.maxDistance) - region.y;
 		const withinHorizontal = (ray.origin[0] >= region.x) && (ray.origin[0] <= region.x + region.width);
 
