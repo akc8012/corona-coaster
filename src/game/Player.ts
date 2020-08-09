@@ -8,7 +8,7 @@ import cart from '../assets/sprites/cart.png';
 
 
 const GRAVITY = 2;
-const JUMP_HEIGHT = 20;
+const JUMP_HEIGHT = 22;
 
 export interface IPlayer {
 	update: (track: ITrack) => void;
@@ -82,20 +82,31 @@ export class Player implements IPlayer {
 	}
 
 	raycast(track: ITrack) {
-		const ray: Ray = {
+		for (const ray of this.createRays()) {
+			const hit = raycast(ray, track.getRegions());
+
+			if (hit !== null) {
+				this.vel[1] = 0;
+				this.region.y = hit.point[1] - this.region.height;
+				this.grounded = true;
+			}
+		}
+	}
+
+	createRays(): Ray[] {
+		return [{
 			origin: [
 				this.region.x + (this.region.width / 2),
 				this.region.y + (this.region.height / 2)
 			],
 			maxDistance: (this.region.height / 2) + this.vel[1],
-		};
-
-		const hit = raycast(ray, track.getRegions());
-		if (hit !== null) {
-			this.vel[1] = 0;
-			this.region.y = hit.point[1] - this.region.height;
-			this.grounded = true;
-		}
+		}, {
+			origin: [
+				this.region.x + this.region.width,
+				this.region.y + (this.region.height / 2)
+			],
+			maxDistance: (this.region.height / 2) + this.vel[1],
+		}];
 	}
 
 	updatePosition() {
