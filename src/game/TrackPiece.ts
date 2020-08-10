@@ -2,9 +2,9 @@ import * as createjs from 'createjs-module';
 
 import { Region } from '~/physics/physics';
 import { getStageSize } from '~/stage/stage';
-import { Size } from '~/physics/math';
+import { Size, Vector } from '~/physics/math';
 
-import cart from '../assets/sprites/cart.png';
+import minecartTrackDouble from '../assets/sprites/minecartTrackDouble.png';
 
 
 export interface ITrackPiece {
@@ -17,16 +17,19 @@ export class TrackPiece implements ITrackPiece {
 	sprite: createjs.Bitmap;
 	stageSize: Size;
 
-	constructor(stage: createjs.Stage, region: Region) {
-		this.region = region;
+	constructor(stage: createjs.Stage, position: Vector) {
+		this.region = {
+			x: position[0],
+			y: position[1],
+			width: 68,
+			height: 15
+		};
+
 		this.stageSize = getStageSize(stage);
 
-		this.sprite = new createjs.Bitmap(cart);
-		// TODO: Tint the sprite for debug purposes
-		this.sprite.x = region.x;
-		this.sprite.y = region.y;
-		this.sprite.scaleX = region.width;
-		this.sprite.scaleY = region.height;
+		this.sprite = new createjs.Bitmap(minecartTrackDouble);
+		this.sprite.x = this.region.x;
+		this.sprite.y = this.region.y;
 
 		stage.addChild(this.sprite);
 	}

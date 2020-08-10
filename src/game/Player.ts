@@ -5,7 +5,7 @@ import { Vector, Size } from '../physics/math';
 import { ITrack } from './Track';
 import { getStageSize } from '~/stage/stage';
 
-import minecartDude from '../assets/sprites/MinecartDude.png';
+import minecartDude from '../assets/sprites/minecartDude.png';
 
 
 const GRAVITY = 2;
