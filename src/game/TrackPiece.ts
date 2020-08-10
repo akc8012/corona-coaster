@@ -7,6 +7,8 @@ import { Size, Vector } from '~/physics/math';
 import minecartTrackDouble from '../assets/sprites/minecartTrackDouble.png';
 
 
+const SPEED = 4;
+
 export interface ITrackPiece {
 	region: Region;
 	update: () => void;
@@ -16,8 +18,11 @@ export class TrackPiece implements ITrackPiece {
 	region: Region;
 	sprite: createjs.Bitmap;
 	stageSize: Size;
+	speedModifier: number;
 
-	constructor(stage: createjs.Stage, position: Vector) {
+	constructor(stage: createjs.Stage, position: Vector, speedModifier: number) {
+		this.speedModifier = speedModifier;
+
 		this.region = {
 			x: position[0],
 			y: position[1],
@@ -35,8 +40,7 @@ export class TrackPiece implements ITrackPiece {
 	}
 
 	update() {
-		const speed = 3;
-		this.region.x -= speed;
+		this.region.x -= (SPEED + this.speedModifier);
 
 		this.loopAroundScreen();
 		this.updatePosition();
