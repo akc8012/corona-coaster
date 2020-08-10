@@ -3,8 +3,8 @@ import pow from '../assets/sprites/pow.png';
 
 
 export function createAnimations(): createjs.Bitmap[] {
-	const animations = [createPow()];
-	return animations;
+	// const animations = [createPow()];
+	return [];
 }
 
 function createPow(): createjs.Bitmap {

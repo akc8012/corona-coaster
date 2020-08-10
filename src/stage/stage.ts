@@ -25,9 +25,10 @@ function createCanvas(): HTMLCanvasElement {
 
 	canvas.width = sizeInfo.size.width;
 	canvas.height = sizeInfo.size.height;
+	canvas.style.backgroundColor = '#d5b9b2';
 
-	if (sizeInfo.needsBorder)
-		canvas.style.border = '1px solid #000';
+	// if (sizeInfo.needsBorder)
+	// 	canvas.style.border = '1px solid #000';
 
 	return canvas;
 }
